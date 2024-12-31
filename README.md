@@ -15,6 +15,7 @@ Start by uploading the starter file to Google Colab, then using the information 
   7. Split the preprocessed data into a features array, X, and a target array, y. Use these arrays and the train_test_split function to split the data into training and testing datasets.
   8. Scale the training and testing features datasets by creating a StandardScaler instance, fitting it to the training data, then using the transform function.
 
+<br><br>
 **Step 2: Compile, Train, and Evaluate the Model**
 
 Using your knowledge of TensorFlow, you’ll design a neural network, or deep learning model, to create a binary classification model that can predict if an Alphabet Soup-funded organization will be successful based on the features in the dataset. You’ll need to think about how many inputs there are before determining the number of neurons and layers in your model. Once you’ve completed that step, you’ll compile, train, and evaluate your binary classification model to calculate the model’s loss and accuracy.
@@ -29,6 +30,7 @@ Using your knowledge of TensorFlow, you’ll design a neural network, or deep le
   9. Evaluate the model using the test data to determine the loss and accuracy.
   10. Save and export your results to an HDF5 file. Name the file AlphabetSoupCharity.h5.
 
+<br><br>
 **Step 3: Optimize the Model**
 
 Using your knowledge of TensorFlow, optimize your model to achieve a target predictive accuracy higher than 75%.
@@ -51,24 +53,74 @@ Note: If you make at least three attempts at optimizing your model, you will not
   4. Design a neural network model, and be sure to adjust for modifications that will optimize the model to achieve higher than 75% accuracy.
   5. Save and export your results to an HDF5 file. Name the file AlphabetSoupCharity_Optimization.h5.
 
+<br><br>
 **Step 4: Write a Report on the Neural Network Model**
 
-For this part of the assignment, you’ll write a report on the performance of the deep learning model you created for Alphabet Soup.
+**Neural Network Model Analysis for Alphabet Soup Charity**
 
-The report should contain the following:
-  1. **Overview** of the analysis: Explain the purpose of this analysis.
-  2. **Results**: Using bulleted lists and images to support your answers, address the following questions:
+**Overview of the Analysis**
 
-     - Data Preprocessing
-       - What variable(s) are the target(s) for your model?
-       - What variable(s) are the features for your model?
-       - What variable(s) should be removed from the input data because they are neither targets nor features?
+The purpose of this analysis is to develop a predictive model to assist Alphabet Soup in identifying applicants with the best chances of success if funded. By leveraging a deep learning model, specifically a neural network, we aim to classify whether an applicant is likely to succeed (IS_SUCCESSFUL) based on a variety of application features. The model is built using a dataset containing information about past applicants, their classifications, and success statuses.
 
-      - Compiling, Training, and Evaluating the Model
-        - How many neurons, layers, and activation functions did you select for your neural network model, and why?
-        - Were you able to achieve the target model performance?
-        - What steps did you take in your attempts to increase model performance?
-  3. **Summary:** Summarize the overall results of the deep learning model. Include a recommendation for how a different model could solve this classification problem, and then explain your recommendation.
+The analysis involves data preprocessing, creating and optimizing a neural network model, and evaluating its performance to achieve the target predictive accuracy of over 75%.
 
+**Results**
+
+**Data Preprocessing**
+
+1. What variable(s) are the target(s) for your model?
+
+	•	The target variable is IS_SUCCESSFUL, a binary variable indicating whether an applicant was successful (1) or not (0).
+
+2. What variable(s) are the features for your model?
+
+    •	The features include all encoded columns derived from the dataset except the target column. These features include:
+  
+	  -	APPLICATION_TYPE_T3, CLASSIFICATION_C1200, ORGANIZATION_Co-operative, etc.
+	  -	Numeric variables such as ASK_AMT.
+
+3. What variable(s) should be removed from the input data because they are neither targets nor features?
+
+	•	Non-beneficial columns such as EIN and NAME were removed as they do not contribute meaningfully to predicting success.
+
+Compiling, Training, and Evaluating the Model
+
+4. How many neurons, layers, and activation functions did you select for your neural network model, and why?
+
+	•	The final model consists of:
+
+    - Input Layer: 33 neurons (one for each input feature).
+    - Four Hidden Layers:
+    - Layer 1: 100 neurons, relu activation.
+    - Layer 2: 50 neurons, LeakyReLU activation.
+    - Layer 3: 20 neurons, LeakyReLU activation.
+    - Layer 4: 10 neurons, LeakyReLU activation.
+    - Output Layer: 1 neuron, sigmoid activation.
+    - These parameters were selected to balance the model’s capacity to learn complex patterns and prevent overfitting.
+
+6. Were you able to achieve the target model performance?
+
+	•	No, the final model achieved an accuracy of ~72.1%, which is below the 75% target.
+
+7. What steps did you take in your attempts to increase model performance?
+
+	•	Several steps were taken to optimize the model:
+
+   - Feature Engineering: Lowered the cutoff value for both application type and classification.
+   - Adjusting Neurons and Layers: Experimented with additional hidden layers and varying numbers of neurons.
+   - Activation Functions: Used LeakyReLU to address potential issues with dead neurons.
+	 - Epochs and Batch Size: Adjusted epochs and batch sizes for better convergence during training.
+  
+**Summary**
+
+**Overall Results**
+
+The neural network model successfully identified patterns in the data but failed to reach the desired 75% accuracy. The most significant challenge was likely the imbalance in the target variable and the noise introduced by low-correlation features.
+
+**Recommendation for Improvement**
+
+A different model, such as Random Forest, could provide better results due to its ability to handle complex relationships and feature importance. Unlike neural networks, Random Forests are less prone to overfitting when tuned correctly and can handle categorical and numeric data effectively. By applying Random Forest, we can gain insights into the relative importance of features, which might inform better feature engineering for future neural network attempts.
+
+In conclusion, while the deep learning model provided reasonable results, a tree-based algorithm or ensemble learning approach might be better suited for this classification problem.
 
 
