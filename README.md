@@ -123,4 +123,4 @@ A different model, such as Random Forest, could provide better results due to it
 
 In conclusion, while the deep learning model provided reasonable results, a tree-based algorithm or ensemble learning approach might be better suited for this classification problem.
 
-
+Utilized Xpert Learning Assistant and Chat GPT for assistance in coding and resolving errors.
